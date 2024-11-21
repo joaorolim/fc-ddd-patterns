@@ -1,5 +1,6 @@
 import OrderItem from "./order_item";
 export default class Order {
+ 
   private _id: string;
   private _customerId: string;
   private _items: OrderItem[];
@@ -23,6 +24,14 @@ export default class Order {
 
   get items(): OrderItem[] {
     return this._items;
+  }
+
+  addItem(items: OrderItem): void {
+
+    let cocatenated = this._items.concat(items);
+
+    this._items = cocatenated;
+    this._total = this.total();
   }
 
   validate(): boolean {
